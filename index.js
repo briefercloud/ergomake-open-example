@@ -13,7 +13,7 @@ app.get('/', async (req, res) => {
     prevRequest = new Date(parseInt(prevRequest)).toISOString()
   }
   await client.set('lastRequest', Date.now())
-  res.send(`Last Request: ${prevRequest}`)
+  res.send(`[New Branch] Last Request: ${prevRequest}`)
   await client.disconnect()
 })
 
