@@ -4,6 +4,6 @@ services:
     ports:
       - '6379:6379'
   app:
-    build: .
+    build: ../
     ports:
-      - '3000:3000'
+      - '8080:3000'
