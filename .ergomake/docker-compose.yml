@@ -1,7 +1,7 @@
 services:
-  app:
+  my_app:
     build: ../
     ports:
       - '8080:3000'
-  redis:
+  cache:
     image: 'redis:latest'

@@ -4,7 +4,7 @@ const { createClient } = require('redis')
 const app = express()
 
 app.get('/', async (req, res) => {
-  const client = createClient({ url: 'redis://redis:6379' })
+  const client = createClient({ url: 'redis://cache:6379' })
   await client.connect()
   let prevRequest = await client.get('lastRequest')
   if (!prevRequest) {
