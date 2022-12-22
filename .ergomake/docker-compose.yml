@@ -1,7 +1,38 @@
+version: "3.8"
 services:
-  my_app:
-    build: ../
+  web:
+    build: ../frontend
+    depends_on:
+      - api
     ports:
-      - '8080:3000'
-  cache:
-    image: 'redis:latest'
+      - "8080:8080"
+    networks:
+      - network-backend
+  api:
+    build: ../backend
+    depends_on:
+      - mongo
+    ports:
+      - "3001:3001"
+    networks:
+     - network-backend
+
+  mongo:
+    image: mongo
+    restart: always
+    volumes:
+      - mongodb_data:/data/db
+    environment:
+      MONGODB_INITDB_ROOT_USERNAME: username
+      MONGODB_INITDB_ROOT_PASSWORD: password
+    # uncomment following lines to access db locally
+    # ports:
+    #   - 27017:27017
+    networks:
+     - network-backend
+
+networks:
+  network-backend:
+
+volumes:
+  mongodb_data:
