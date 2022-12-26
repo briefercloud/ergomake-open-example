@@ -1,7 +1,10 @@
 FROM node:16-alpine
 
+ARG REACT_APP_API_URL
+
 WORKDIR /app
 
+ENV REACT_APP_API_URL $REACT_APP_API_URL
 ENV PORT 8080
 
 # add '/app/node_modules/.bin' to $PATH
