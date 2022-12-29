@@ -1,21 +1,24 @@
-version: "3.8"
+version: '3.8'
 services:
   web:
-    build: ../frontend
+    build:
+      context: ../frontend
+      args:
+        REACT_APP_API_URL: http://localhost:3001/api
     depends_on:
       - api
     ports:
-      - "8080:8080"
-    networks:
-      - network-backend
+      - '8080:8080'
+    labels:
+      dev.ergomake.preview.replace-arg.REACT_APP_API_URL: '{{ ergomake.previewUrls.api }}/api'
   api:
     build: ../backend
     depends_on:
       - mongo
     ports:
-      - "3001:3001"
+      - '3001:3001'
     networks:
-     - network-backend
+      - network-backend
 
   mongo:
     image: mongo
@@ -29,7 +32,7 @@ services:
     # ports:
     #   - 27017:27017
     networks:
-     - network-backend
+      - network-backend
 
 networks:
   network-backend:

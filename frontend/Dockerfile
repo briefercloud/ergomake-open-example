@@ -1,9 +1,11 @@
-FROM node:14-alpine
+FROM node:16-alpine
+
+ARG REACT_APP_API_URL
 
 WORKDIR /app
 
+ENV REACT_APP_API_URL $REACT_APP_API_URL
 ENV PORT 8080
-ENV PUBLIC_URL ./todo-app-demo
 
 # add '/app/node_modules/.bin' to $PATH
 ENV PATH /app/node_modules/.bin:$PATH
