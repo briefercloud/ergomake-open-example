@@ -6,7 +6,7 @@ services:
     ports:
       - '8080:8080'
     labels:
-      dev.ergomake.preview.replace-arg.REACT_APP_API_URL: 'https://{{ ergomake.previewUrls.api }}/api'
+      dev.ergomake.env.replace-arg.REACT_APP_API_URL: 'https://{{ services.api.url }}/api'
 
   api:
     build: ../backend
