@@ -17,7 +17,7 @@
   },
   "scripts": {
     "dev": "react-scripts start",
-    "start": "http-server ./build --port 8080",
+    "start": "http-server ./build --port 8080 -a 0.0.0.0",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
